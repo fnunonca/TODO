@@ -1,10 +1,18 @@
 using System;
+using Application.Interface;
+using Application.Main;
+using Domain.Core;
+using Domain.Interface;
+using Infraestructure.Interface;
+using Infraestructure.Repository;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Transversal.Common;
 
 namespace Service.WebApi
 {
@@ -22,6 +30,12 @@ namespace Service.WebApi
         {
             services.AddControllers();
             AddSwagger(services);
+            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddSingleton<IConnectionFactory, ConnectionFactory>();
+            //services.AddScoped(typeof(IAppLogger), typeof(LoggerAdapter));
+            services.AddScoped<ITaskApplication, TaskApplication>();
+            services.AddScoped<ITaskDomain, TaskDomain>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

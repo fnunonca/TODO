@@ -4,6 +4,7 @@
     <ProjectReference Include="..\Domain.Entity\Domain.Entity.csproj" />
     <ProjectReference Include="..\Domain.Interface\Domain.Interface.csproj" />
     <ProjectReference Include="..\Infraestructure.Interface\Infraestructure.Interface.csproj" />
+    <ProjectReference Include="..\Transversal.Common\Transversal.Common.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
